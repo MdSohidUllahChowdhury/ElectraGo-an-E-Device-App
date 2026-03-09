@@ -1,13 +1,14 @@
-import 'package:e_device_app/Controller/utils.dart';
+import 'package:ElectraGo/Controller/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-Widget payBill(brandName, price,image) {
+Widget payBill(brandName, price, image) {
   return ElevatedButton(
     onPressed: () {
       Get.bottomSheet(
-        Utils.innerPayBill(price, brandName,image),
-      );},
+        Utils.innerPayBill(price, brandName, image),
+      );
+    },
     style: ButtonStyle(
       elevation: const WidgetStatePropertyAll(0),
       minimumSize: WidgetStateProperty.all<Size>(const Size(300, 55)),

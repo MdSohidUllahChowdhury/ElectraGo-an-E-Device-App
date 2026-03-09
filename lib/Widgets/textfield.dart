@@ -27,8 +27,9 @@ class SectionName extends StatelessWidget {
           filled: true,
           fillColor: const Color.fromARGB(213, 190, 186, 186),
           hintText: nameit,
-          hintStyle: const TextStyle(fontSize: 10),
-          contentPadding: const EdgeInsets.all(12),
+          hintStyle: const TextStyle(
+              fontSize: 12, color: Colors.black, letterSpacing: 1.4),
+          contentPadding: const EdgeInsets.all(17),
           border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(16),
               borderSide: BorderSide.none),

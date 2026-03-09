@@ -1,8 +1,8 @@
-import 'package:e_device_app/Controller/utils.dart';
-import 'package:e_device_app/View/Main%20Screen/cart_items.dart';
-import 'package:e_device_app/Widgets/ads_bord.dart';
-import 'package:e_device_app/Widgets/drawer.dart';
-import 'package:e_device_app/Widgets/product_add_on.dart';
+import 'package:ElectraGo/Controller/utils.dart';
+import 'package:ElectraGo/View/Main%20Screen/cart_items.dart';
+import 'package:ElectraGo/Widgets/ads_bord.dart';
+import 'package:ElectraGo/Widgets/drawer.dart';
+import 'package:ElectraGo/Widgets/product_add_on.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -12,9 +12,9 @@ class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:const Color(0xffE3F0A3),
+      backgroundColor: const Color(0xffE3F0A3),
       appBar: AppBar(
-        backgroundColor:Colors.transparent,
+        backgroundColor: Colors.transparent,
         elevation: 0,
         actions: [
           IconButton(
@@ -26,7 +26,7 @@ class MainScreen extends StatelessWidget {
           ),
           IconButton(
             onPressed: () {
-              Get.to(()=>const CartItems());
+              Get.to(() => const CartItems());
             },
             icon: const Icon(Icons.shopping_bag_outlined),
           ),

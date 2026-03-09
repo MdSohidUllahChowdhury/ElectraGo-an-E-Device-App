@@ -1,4 +1,4 @@
-import 'package:e_device_app/Model/device_model.dart';
+import 'package:ElectraGo/Model/device_model.dart';
 
 List<DeviceModel> productList = [
   DeviceModel(

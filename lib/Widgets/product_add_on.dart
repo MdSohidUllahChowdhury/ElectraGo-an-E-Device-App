@@ -1,6 +1,6 @@
-import 'package:e_device_app/Controller/provider_cart.dart';
-import 'package:e_device_app/Model/product_list.dart';
-import 'package:e_device_app/View/Main Screen/product_details.dart';
+import 'package:ElectraGo/Controller/provider_cart.dart';
+import 'package:ElectraGo/Model/product_list.dart';
+import 'package:ElectraGo/View/Main Screen/product_details.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:get/get.dart';

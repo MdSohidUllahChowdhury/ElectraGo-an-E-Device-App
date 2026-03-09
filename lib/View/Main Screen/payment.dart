@@ -1,4 +1,4 @@
-import 'package:e_device_app/Widgets/bank_card.dart';
+import 'package:ElectraGo/Widgets/bank_card.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -31,7 +31,10 @@ class PaymentMethod extends StatelessWidget {
             ),
             title: const Text(
               "Checkout",
-              style: TextStyle(fontSize: 23,fontWeight: FontWeight.w700,color: Colors.black),
+              style: TextStyle(
+                  fontSize: 23,
+                  fontWeight: FontWeight.w700,
+                  color: Colors.black),
             ),
           ),
           Container(
@@ -93,7 +96,7 @@ class PaymentMethod extends StatelessWidget {
                       color: Colors.black,
                       letterSpacing: 1.3))),
           const SizedBox(height: 15),
-         bankCard(context),
+          bankCard(context),
           const Expanded(child: SizedBox(height: 15)),
           ElevatedButton(
             onPressed: () {},

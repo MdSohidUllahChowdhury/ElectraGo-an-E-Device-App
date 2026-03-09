@@ -1,5 +1,5 @@
-import 'package:e_device_app/Controller/counter_laptop.dart';
-import 'package:e_device_app/Widgets/payment_system.dart';
+import 'package:ElectraGo/Controller/counter_laptop.dart';
+import 'package:ElectraGo/Widgets/payment_system.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:get/get.dart';

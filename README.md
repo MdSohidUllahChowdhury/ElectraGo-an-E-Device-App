@@ -1,7 +1,7 @@
-# E-Device App
+# ElectraGo an E-Device App
 
 ## Overview
-E-Device Shopping App is a Flutter-based mobile application that allows users to browse and purchase electronic devices. The app features authentication, profile management, a shopping cart, multi-language support, and a secure payment system.
+ElectraGo an E-Device Shopping App is a Flutter-based mobile application that allows users to browse and purchase electronic devices. The app features authentication, profile management, a shopping cart, multi-language support, and a secure payment system.
 
 ## Features
 - **Welcome Screen**: A user-friendly introduction to the app.

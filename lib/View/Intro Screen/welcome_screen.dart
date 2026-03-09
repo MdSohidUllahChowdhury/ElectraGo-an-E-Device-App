@@ -1,5 +1,5 @@
-import 'package:e_device_app/View/Intro Screen/login.dart';
-import 'package:e_device_app/View/Intro Screen/register.dart';
+import 'login.dart';
+import 'register.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:get/get.dart';
@@ -16,8 +16,8 @@ class WelcomeScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Image.asset(
-            'lib/Assets/Images/man.png',
-            height: 250,
+            'lib/Assets/Images/logo.jpg',
+            height: 300,
             width: double.infinity,
           ),
           const SizedBox(height: 30),

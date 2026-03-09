@@ -1,4 +1,4 @@
-import 'package:e_device_app/View/Intro Screen/welcome_screen.dart';
+import 'welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

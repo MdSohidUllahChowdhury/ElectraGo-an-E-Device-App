@@ -1,5 +1,5 @@
-import 'package:e_device_app/Controller/provider_cart.dart';
-import 'package:e_device_app/Widgets/custom_cart.dart';
+import 'package:ElectraGo/Controller/provider_cart.dart';
+import 'package:ElectraGo/Widgets/custom_cart.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -9,7 +9,7 @@ class CartItems extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:const Color(0xffE3F0A3),
+      backgroundColor: const Color(0xffE3F0A3),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         toolbarHeight: 45,
@@ -19,7 +19,7 @@ class CartItems extends StatelessWidget {
       body: Consumer<CartController>(
         builder: (context, value, child) => Column(
           children: [
-            const SizedBox(height:20),
+            const SizedBox(height: 20),
             Expanded(
               child: ListView.builder(
                 itemCount: value.callingCart.length,

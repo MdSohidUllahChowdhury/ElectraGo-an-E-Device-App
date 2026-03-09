@@ -1,6 +1,6 @@
-import 'package:e_device_app/View/Intro Screen/login.dart';
-import 'package:e_device_app/View/Setting%20Screen/language.dart';
-import 'package:e_device_app/View/Setting%20Screen/profile.dart';
+import 'package:ElectraGo/View/Intro%20Screen/login.dart';
+import 'package:ElectraGo/View/Setting%20Screen/language.dart';
+import 'package:ElectraGo/View/Setting%20Screen/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

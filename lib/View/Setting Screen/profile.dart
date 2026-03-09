@@ -1,5 +1,5 @@
-import 'package:e_device_app/View/Main Screen/mainscreen.dart';
-import 'package:e_device_app/Widgets/textfield.dart';
+import 'package:ElectraGo/View/Main Screen/mainscreen.dart';
+import 'package:ElectraGo/Widgets/textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -16,7 +16,7 @@ class ProfileSet extends StatelessWidget {
           const Text(
             'Profile Setup',
             style: TextStyle(
-              fontSize: 27,
+              fontSize: 28,
               letterSpacing: 1.4,
               color: Color(0xff42D674),
               fontWeight: FontWeight.bold,
@@ -27,7 +27,7 @@ class ProfileSet extends StatelessWidget {
             "Please fill be below details to complete\nyour profile",
             textAlign: TextAlign.center,
             style: TextStyle(
-                fontSize: 10,
+                fontSize: 11,
                 color: Colors.black,
                 fontWeight: FontWeight.bold,
                 letterSpacing: 1.4),
@@ -70,7 +70,7 @@ class ProfileSet extends StatelessWidget {
             onPressed: () => Get.to(() => const MainScreen()),
             style: ButtonStyle(
               elevation: const WidgetStatePropertyAll(0),
-              minimumSize: WidgetStateProperty.all<Size>(const Size(300, 55)),
+              minimumSize: WidgetStateProperty.all<Size>(const Size(380, 60)),
               backgroundColor: WidgetStateProperty.all<Color>(
                 const Color(0xff42D674),
               ),
@@ -78,7 +78,7 @@ class ProfileSet extends StatelessWidget {
             child: const Text(
               'Complete Setup',
               style: TextStyle(
-                  fontSize: 14,
+                  fontSize: 15,
                   letterSpacing: 1.2,
                   color: Colors.white,
                   fontWeight: FontWeight.bold),
