@@ -28,7 +28,32 @@ class API {
       print("An error occurred: $e");
     }
   }
+
+  static Future<void> postProfileData(Map<String, dynamic> data) async {
+    var value = Uri.parse(baseUrl + "/profileData");
+    print("Request Body: $data");
+
+    try {
+      final response = await http.post(
+        value,
+        headers: {'Content-Type': 'application/json; charset=UTF-8'},
+        body: jsonEncode(data),
+      );
+
+      if (response.statusCode == 200) {
+        var jsonResponse = jsonDecode(response.body);
+        print("Response JSON: $jsonResponse");
+      } else {
+        print("Failed to load data. Status code: ${response.statusCode}");
+        print("Response body: ${response.body}");
+      }
+    } catch (e) {
+      print("An error occurred: $e");
+    }
+  }
 }
+
+
 //   static Future<List<dynamic>> getUsers() async {
 //     var value = Uri.parse(baseUrl + "outPutDetails");
 //     try {
