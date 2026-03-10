@@ -1,5 +1,4 @@
 import 'package:ElectraGo/Api/nodejs_path.dart';
-
 import 'login.dart';
 import 'package:ElectraGo/Widgets/textfield.dart';
 import 'package:flutter/material.dart';
@@ -16,11 +15,6 @@ class _RegisterState extends State<Register> {
   final emailCL = TextEditingController();
   final passwordCL = TextEditingController();
 
-  //  @override
-  // void dispose() {
-  //   emailCL.dispose();
-  //   passwordCL.dispose();
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -100,7 +94,7 @@ class _RegisterState extends State<Register> {
                           backgroundColor: Colors.teal,
                         ),
                       );
-                      //Get.offAll(() => const Login());
+                      Get.offAll(() => const Login());
                     }
                   },
                   style: ButtonStyle(
