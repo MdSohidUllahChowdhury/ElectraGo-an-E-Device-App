@@ -6,8 +6,8 @@ import 'package:http/http.dart' as http;
 class API {
   static const baseUrl = "http://192.168.0.213:3000";
 
-  static Future<void> postRequest(Map<String, dynamic> data) async {
-    var value = Uri.parse(baseUrl + "/singUp");
+ static Future<void> authInfo(Map<String, dynamic> data) async {
+    var value = Uri.parse(baseUrl + "/authInfo");
     print("Request Body: $data");
 
     try {
@@ -28,6 +28,7 @@ class API {
       print("An error occurred: $e");
     }
   }
+
 
   static Future<void> postProfileData(Map<String, dynamic> data) async {
     var value = Uri.parse(baseUrl + "/profileData");

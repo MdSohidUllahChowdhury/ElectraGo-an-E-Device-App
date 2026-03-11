@@ -14,7 +14,7 @@ class Register extends StatefulWidget {
 class _RegisterState extends State<Register> {
   final emailCL = TextEditingController();
   final passwordCL = TextEditingController();
-
+  final userNameCL = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -57,6 +57,12 @@ class _RegisterState extends State<Register> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 SectionName(
+                  controllerText: userNameCL,
+                  nameit: 'User Name',
+                  isRequired: true,
+                ),
+                const SizedBox(height: 25),
+                SectionName(
                   controllerText: emailCL,
                   nameit: 'Email',
                   isRequired: true,
@@ -68,24 +74,18 @@ class _RegisterState extends State<Register> {
                   forpassword: true,
                   isRequired: true,
                 ),
-                const SizedBox(height: 25),
-                SectionName(
-                  controllerText: passwordCL,
-                  nameit: 'Confirm password',
-                  forpassword: true,
-                  isRequired: true,
-                ),
                 const SizedBox(height: 20),
                 ElevatedButton(
                   onPressed: () async {
                     if (formkey.currentState!.validate()) {
                       final data = {
+                        "userName": userNameCL.text,
                         "email": emailCL.text,
                         "password": passwordCL.text,
                       };
                       print("Sending data: $data");
 
-                      await API.postRequest(data);
+                      await API.authInfo(data);
 
                       // ignore: use_build_context_synchronously
                       ScaffoldMessenger.of(context).showSnackBar(

@@ -44,25 +44,28 @@ class _ProfileSetState extends State<ProfileSet> {
                   fontWeight: FontWeight.bold,
                   letterSpacing: 1.4),
             ),
-            const SizedBox(height: 55),
+            const SizedBox(height: 35),
             Stack(alignment: Alignment.bottomRight, children: [
               CircleAvatar(
+                backgroundColor: Colors.blue,
                 radius: 50,
                 child: IconButton(
                   onPressed: () {},
                   icon: const Icon(
                     Icons.person,
-                    size: 60,
+                    size: 90,
+                    color: Colors.white,
                   ),
                 ),
               ),
               CircleAvatar(
+                backgroundColor: Colors.amberAccent,
                 radius: 17,
                 child: IconButton(
                   onPressed: () {},
                   icon: const Icon(
                     Icons.camera_alt,
-                    size: 10,
+                    size: 17,
                   ),
                 ),
               ),
