@@ -105,7 +105,7 @@ class _ProfileSetState extends State<ProfileSet> {
                     ),
                   );
                   print('req from flutter: $data');
-                  //Get.to(() => const MainScreen());
+                  Get.to(() => const MainScreen());
                 }
               },
               style: ButtonStyle(

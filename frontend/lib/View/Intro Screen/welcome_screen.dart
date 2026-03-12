@@ -59,7 +59,7 @@ class WelcomeScreen extends StatelessWidget {
                   ),
                 ),
                 child: const Text(
-                  'Login',
+                  'Log In',
                   style: TextStyle(
                       fontSize: 14,
                       letterSpacing: 1.2,
@@ -92,6 +92,6 @@ class WelcomeScreen extends StatelessWidget {
         ],
       ),
     ).animate().flip(duration: const Duration(seconds: 1)).shimmer(
-            color: Colors.blueAccent, duration: const Duration(seconds: 4)));
+            color: Colors.white, duration: const Duration(seconds: 4)));
   }
 }

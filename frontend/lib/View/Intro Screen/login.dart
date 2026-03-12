@@ -1,11 +1,28 @@
+import 'package:ElectraGo/Api/nodejs_path.dart';
 import 'package:ElectraGo/View/Setting Screen/profile.dart';
 import 'register.dart';
 import 'package:ElectraGo/Widgets/textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class Login extends StatelessWidget {
+class Login extends StatefulWidget {
   const Login({super.key});
+
+  @override
+  State<Login> createState() => _LoginState();
+}
+
+class _LoginState extends State<Login> {
+  final _emailCtrl = TextEditingController();
+  final _passwordCtrl = TextEditingController();
+
+  @override
+  void dispose() {
+    _emailCtrl.dispose();
+    _passwordCtrl.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final formkey = GlobalKey<FormState>();
@@ -47,12 +64,14 @@ class Login extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const SectionName(
+                SectionName(
+                  controllerText: _emailCtrl,
                   nameit: 'Email',
                   isRequired: true,
                 ),
                 const SizedBox(height: 25),
-                const SectionName(
+                SectionName(
+                  controllerText: _passwordCtrl,
                   nameit: 'Password',
                   forpassword: true,
                   isRequired: true,
@@ -71,9 +90,14 @@ class Login extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
                 ElevatedButton(
-                  onPressed: () {
+                  onPressed: () async {
                     if (formkey.currentState!.validate()) {
-                      Get.offAll(() => const ProfileSet());
+                      final data = {
+                        "email": _emailCtrl.text.trim(),
+                        "password": _passwordCtrl.text
+                      };
+                      await API.logIn(data);
+                      Get.to(() => const ProfileSet());
                     }
                   },
                   style: ButtonStyle(
@@ -85,7 +109,7 @@ class Login extends StatelessWidget {
                     ),
                   ),
                   child: const Text(
-                    'Sing in',
+                    'Log In',
                     style: TextStyle(
                         fontSize: 17,
                         color: Colors.white,
@@ -98,7 +122,9 @@ class Login extends StatelessWidget {
           ),
           const SizedBox(height: 10),
           TextButton(
-            onPressed: () => Get.offAll(() => const Register()),
+            onPressed: () async {
+              Get.offAll(() => const Register());
+            },
             child: const Text(
               'Create a new account',
               style: TextStyle(
