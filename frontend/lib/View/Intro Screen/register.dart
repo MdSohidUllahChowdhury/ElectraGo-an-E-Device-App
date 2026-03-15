@@ -57,22 +57,24 @@ class _RegisterState extends State<Register> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 SectionName(
+                  nameit: 'User name',
                   controllerText: userNameCL,
-                  nameit: 'User Name',
-                  isRequired: true,
+                  forPassword: false,
+                  fieldType: FieldType.username,
                 ),
                 const SizedBox(height: 25),
                 SectionName(
-                  controllerText: emailCL,
                   nameit: 'Email',
-                  isRequired: true,
+                  controllerText: emailCL,
+                  forPassword: false,
+                  fieldType: FieldType.email,
                 ),
                 const SizedBox(height: 25),
                 SectionName(
-                  controllerText: passwordCL,
                   nameit: 'Password',
-                  forpassword: true,
-                  isRequired: true,
+                  controllerText: passwordCL,
+                  forPassword: true,
+                  fieldType: FieldType.password,
                 ),
                 const SizedBox(height: 20),
                 ElevatedButton(

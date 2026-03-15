@@ -6,13 +6,10 @@ import 'package:http/http.dart' as http;
 class API {
   static const baseUrl = "http://192.168.0.213:3000";
 
-  static Future<void> logIn(Map<String, dynamic> data) async {
+  static Future<bool> logIn(Map<String, dynamic> data) async {
     var value = Uri.parse(baseUrl + "/login");
-    print("─────────────────────────");
     print("📤 Sending to: $value");
     print("📤 Sending data: $data");
-    print("─────────────────────────");
-    print("Request Body: $data");
 
     try {
       final response = await http.post(
@@ -21,23 +18,20 @@ class API {
         body: jsonEncode(data),
       );
 
-      // ✅ Step 1: decode response.body — NOT data
       final responseBody = jsonDecode(response.body);
       print("Response Body: $responseBody");
 
       if (response.statusCode == 200) {
-        // ✅ Step 2: read token from responseBody
         String token = responseBody['token'];
-        var user = responseBody['user'];
-
-        print('My token is: $token');
-        print('User: $user');
+        print('Token: $token');
+        return true;
       } else {
-        // ✅ Step 3: read error message from responseBody
-        print('Error: ${responseBody['message']}');
+        print('Failed: ${responseBody['message']}');
+        return false;
       }
     } catch (e) {
-      print("An error occurred: $e");
+      print("Error: $e");
+      return false;
     }
   }
 

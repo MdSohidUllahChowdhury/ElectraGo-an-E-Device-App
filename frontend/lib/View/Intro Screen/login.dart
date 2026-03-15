@@ -65,16 +65,17 @@ class _LoginState extends State<Login> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 SectionName(
-                  controllerText: _emailCtrl,
                   nameit: 'Email',
-                  isRequired: true,
+                  controllerText: _emailCtrl,
+                  forPassword: false,
+                  fieldType: FieldType.email,
                 ),
                 const SizedBox(height: 25),
                 SectionName(
-                  controllerText: _passwordCtrl,
                   nameit: 'Password',
-                  forpassword: true,
-                  isRequired: true,
+                  controllerText: _passwordCtrl,
+                  forPassword: true,
+                  fieldType: FieldType.password,
                 ),
                 const SizedBox(height: 13),
                 const Align(
@@ -96,8 +97,20 @@ class _LoginState extends State<Login> {
                         "email": _emailCtrl.text.trim(),
                         "password": _passwordCtrl.text
                       };
-                      await API.logIn(data);
-                      Get.to(() => const ProfileSet());
+                      bool isSuccess = await API.logIn(data);
+
+                      if (isSuccess) {
+                        Get.to(() => const ProfileSet());
+                      } else {
+                        // ignore: use_build_context_synchronously
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content:
+                                Text('Wrong email or password. Try again!'),
+                            backgroundColor: Colors.red,
+                          ),
+                        );
+                      }
                     }
                   },
                   style: ButtonStyle(
