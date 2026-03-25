@@ -26,7 +26,7 @@ class CustomCart extends StatelessWidget {
                   padding: const EdgeInsets.all(12),
                   height: 100,
                   decoration: BoxDecoration(
-                      color: const Color(0xff42D674),
+                      color: Colors.blueGrey,
                       borderRadius: BorderRadius.circular(24),
                       boxShadow: [
                         BoxShadow(

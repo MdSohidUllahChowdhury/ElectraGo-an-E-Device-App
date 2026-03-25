@@ -1,6 +1,6 @@
 const express = require('express');
-const bcrypt = require('bcrypt');
 const mysql = require('mysql2');
+const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
 const app = express();
@@ -39,7 +39,7 @@ app.post('/authInfo', async (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
 
-  console.log('📩 SignUp request:', { userName, email, password });
+  console.log('📩 SignUp request from Flutter Side:', {'User Name': userName, 'Email': email, 'Password': password });
 
   // Validation
   // ── Check 1: Are all fields present? ────────────────────────
@@ -58,10 +58,10 @@ app.post('/authInfo', async (req, res) => {
     });
   }
 
-  if (userName.trim().length > 30) {
+  if (userName.trim().length > 15) {
     return res.status(400).json({
       success: false,
-      message: 'Username must be less than 30 characters',
+      message: 'Username must be less than 15 characters',
     });
   }
 
@@ -162,7 +162,7 @@ app.post('/login', async (req, res) => {
   console.log('🔑 Password:', req.body.password);
 
     //  Are all fields present?
-  if (!userName || !email) {
+  if (!email || !password) {
     return res.status(400).json({
       success: false,
       message: 'Email and password are required',
@@ -214,8 +214,8 @@ app.post('/login', async (req, res) => {
       token: token,
       user: {
         id: user.id,
+        email: user.email,
         name: user.name,
-        email: user.email
       }
     });
 

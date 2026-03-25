@@ -112,15 +112,51 @@ class Utils {
       scrollDirection: Axis.horizontal,
       child: Row(
         children: [
-          CategorisIcon(icons: Icon(Icons.watch)),
-          CategorisIcon(icons: Icon(Icons.shopping_basket_rounded)),
-          CategorisIcon(icons: Icon(Icons.phone_android_sharp)),
-          CategorisIcon(icons: Icon(Icons.bike_scooter)),
-          CategorisIcon(icons: Icon(Icons.laptop)),
-          CategorisIcon(icons: Icon(Icons.shopping_basket_rounded)),
-          CategorisIcon(icons: Icon(Icons.phone_android_sharp)),
-          CategorisIcon(icons: Icon(Icons.bike_scooter)),
-          CategorisIcon(icons: Icon(Icons.laptop)),
+          CategorisIcon(
+              icons: Icon(
+            Icons.watch,
+            color: Colors.white,
+          )),
+          CategorisIcon(
+              icons: Icon(
+            Icons.shopping_basket_rounded,
+            color: Colors.white,
+          )),
+          CategorisIcon(
+              icons: Icon(
+            Icons.phone_android_sharp,
+            color: Colors.white,
+          )),
+          CategorisIcon(
+              icons: Icon(
+            Icons.bike_scooter,
+            color: Colors.white,
+          )),
+          CategorisIcon(
+              icons: Icon(
+            Icons.laptop,
+            color: Colors.white,
+          )),
+          CategorisIcon(
+              icons: Icon(
+            Icons.shopping_basket_rounded,
+            color: Colors.white,
+          )),
+          CategorisIcon(
+              icons: Icon(
+            Icons.phone_android_sharp,
+            color: Colors.white,
+          )),
+          CategorisIcon(
+              icons: Icon(
+            Icons.bike_scooter,
+            color: Colors.white,
+          )),
+          CategorisIcon(
+              icons: Icon(
+            Icons.laptop,
+            color: Colors.white,
+          )),
         ],
       ),
     );

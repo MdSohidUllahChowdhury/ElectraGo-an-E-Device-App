@@ -16,22 +16,30 @@ class ProductDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xffE3F0A3),
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        toolbarHeight: 45,
+        centerTitle: true,
+        title: const Text(
+          "Product Details",
+          style: TextStyle(
+              fontSize: 23, fontWeight: FontWeight.w700, color: Colors.black),
+        ),
+      ),
+      backgroundColor: Colors.white,
       body: Container(
         padding: const EdgeInsets.all(6),
         margin: const EdgeInsets.all(8),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            IconButton(
-                onPressed: () => Get.back(),
-                icon: const Icon(Icons.keyboard_double_arrow_up)),
             Animate(
               child: SizedBox(
                 height: MediaQuery.sizeOf(context).height * .25,
                 child: Image.asset(
                   productImage,
-                  height: 250,
+                  height: 400,
                 ),
               ),
             )
@@ -52,7 +60,7 @@ class ProductDetails extends StatelessWidget {
             Container(
               height: MediaQuery.sizeOf(context).height * .35,
               decoration: const BoxDecoration(
-                  color: Color(0xff42D674),
+                  color: Colors.teal,
                   borderRadius: BorderRadius.all(Radius.circular(10)),
                   boxShadow: [
                     BoxShadow(
@@ -108,7 +116,7 @@ class ProductDetails extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 12,
                       fontWeight: FontWeight.w600,
-                      color: Color.fromARGB(186, 0, 0, 0),
+                      color: Colors.white,
                       letterSpacing: 1.1,
                     ),
                   ),
@@ -119,7 +127,7 @@ class ProductDetails extends StatelessWidget {
             quantity(),
             const Expanded(child: SizedBox(height: 20)),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 payBill(brandName, offerPrice, productImage),
                 CircleAvatar(

@@ -9,7 +9,7 @@ class CategorisIcon extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(right: 8),
       child: CircleAvatar(
-        backgroundColor: const Color(0xff80EF80),
+        backgroundColor: const Color(0xff53B176),
         radius: 28,
         child: icons,
       ),

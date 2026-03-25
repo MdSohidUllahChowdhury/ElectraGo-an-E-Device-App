@@ -1,5 +1,5 @@
 import 'package:ElectraGo/Api/nodejs_path.dart';
-import 'package:ElectraGo/View/Setting Screen/profile.dart';
+import 'package:ElectraGo/View/Main%20Screen/mainscreen.dart';
 import 'register.dart';
 import 'package:ElectraGo/Widgets/textfield.dart';
 import 'package:flutter/material.dart';
@@ -100,7 +100,7 @@ class _LoginState extends State<Login> {
                       bool isSuccess = await API.logIn(data);
 
                       if (isSuccess) {
-                        Get.to(() => const ProfileSet());
+                        Get.to(() => const MainScreen());
                       } else {
                         // ignore: use_build_context_synchronously
                         ScaffoldMessenger.of(context).showSnackBar(

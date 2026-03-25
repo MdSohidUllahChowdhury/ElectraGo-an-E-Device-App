@@ -33,8 +33,11 @@ class ProductAddON extends StatelessWidget {
                 noOfferPrice: iteam.withOutOfferPrice,
               )),
           child: Container(
+              padding: context.isPhone
+                  ? const EdgeInsets.all(8)
+                  : const EdgeInsets.all(12),
               decoration: BoxDecoration(
-                color: const Color(0xff42D674),
+                color: const Color(0xffC9C8CC),
                 borderRadius: BorderRadius.circular(24),
               ),
               child: Animate(
@@ -42,46 +45,50 @@ class ProductAddON extends StatelessWidget {
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
+                      const SizedBox(height: 14),
                       Image.asset(
                         iteam.productPic,
                         height: 130,
+                        fit: BoxFit.contain,
                       ),
-                      Text(
-                        iteam.brandName,
-                        style: const TextStyle(
-                          fontSize: 12.5,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.black,
-                          letterSpacing: 1.1,
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          iteam.brandName,
+                          style: const TextStyle(
+                            fontSize: 12.5,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.black,
+                            letterSpacing: 1.1,
+                          ),
                         ),
                       ),
                       const SizedBox(height: 2),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 12),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              iteam.withOfferPrice,
-                              textAlign: TextAlign.left,
-                              style: const TextStyle(
-                                fontSize: 10,
-                                fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 0, 0, 0),
-                                letterSpacing: 1.1,
-                              ),
-                            ),
-                            Text(
-                              iteam.withOutOfferPrice,
-                              textAlign: TextAlign.left,
-                              style: const TextStyle(
-                                  fontSize: 10,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.redAccent,
-                                  letterSpacing: 1.1,
-                                  decoration: TextDecoration.lineThrough),
-                            ),
-                          ],
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          iteam.withOfferPrice,
+                          textAlign: TextAlign.left,
+                          style: const TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                            color: Color.fromARGB(255, 0, 0, 0),
+                            letterSpacing: 1.1,
+                          ),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          iteam.withOutOfferPrice,
+                          textAlign: TextAlign.left,
+                          style: const TextStyle(
+                              fontSize: 11,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.blueGrey,
+                              letterSpacing: 1.1,
+                              decoration: TextDecoration.lineThrough,
+                              decorationColor: Colors.black),
                         ),
                       ),
                     ],
@@ -90,20 +97,21 @@ class ProductAddON extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Container(
-                        margin: const EdgeInsets.all(8),
-                        height: 13,
+                        margin: const EdgeInsets.all(2),
+                        height: 20,
                         width: 55,
                         decoration: BoxDecoration(
-                            color: const Color.fromARGB(253, 255, 255, 255),
-                            borderRadius: BorderRadius.circular(16)),
-                        child: Text(
-                          iteam.discount,
-                          textAlign: TextAlign.center,
-                          style: const TextStyle(
-                            fontSize: 9,
-                            fontWeight: FontWeight.w600,
                             color: Colors.redAccent,
-                            letterSpacing: 1.1,
+                            borderRadius: BorderRadius.circular(16)),
+                        child: Center(
+                          child: Text(
+                            iteam.discount,
+                            style: const TextStyle(
+                              fontSize: 11,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                              letterSpacing: 1.1,
+                            ),
                           ),
                         ),
                       ),
@@ -118,7 +126,7 @@ class ProductAddON extends StatelessWidget {
                           },
                           icon: const Icon(
                             Icons.favorite_border,
-                            size: 15,
+                            size: 20,
                           )),
                     ],
                   ),
