@@ -17,6 +17,14 @@ class _RegisterState extends State<Register> {
   final userNameCL = TextEditingController();
 
   @override
+  void dispose() {
+    emailCL.dispose();
+    passwordCL.dispose();
+    userNameCL.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final formkey = GlobalKey<FormState>();
     return Scaffold(

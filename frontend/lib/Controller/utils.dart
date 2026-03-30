@@ -6,8 +6,8 @@ import 'package:get/get.dart';
 class Utils {
   static innerPayBill(cost, brandName, image) {
     return Container(
-        height: 400,
-        width: 300,
+        height: 300,
+        width: MediaQuery.of(Get.context!).size.width * .9,
         margin: const EdgeInsets.all(16),
         padding: const EdgeInsets.all(8),
         decoration: BoxDecoration(
@@ -18,16 +18,16 @@ class Utils {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text(
-              'Product Details 👇',
+              'Product Details\n-----------------------',
               style: TextStyle(
                 fontSize: 20,
-                fontWeight: FontWeight.w600,
+                fontWeight: FontWeight.bold,
                 color: Colors.black,
                 letterSpacing: 1.2,
               ),
             ),
             const SizedBox(
-              height: 30,
+              height: 15,
             ),
             Text(
               brandName,
@@ -43,9 +43,9 @@ class Utils {
             ),
             Text('Price: $cost',
                 style: const TextStyle(
-                  fontSize: 14,
+                  fontSize: 18,
                   fontWeight: FontWeight.bold,
-                  color: Color.fromARGB(255, 0, 0, 0),
+                  color: Colors.red,
                   letterSpacing: 1.1,
                 )),
             const SizedBox(
@@ -61,16 +61,16 @@ class Utils {
               },
               style: ButtonStyle(
                 elevation: const WidgetStatePropertyAll(0),
-                minimumSize: WidgetStateProperty.all<Size>(const Size(180, 55)),
+                minimumSize: WidgetStateProperty.all<Size>(const Size(220, 55)),
                 backgroundColor:
                     WidgetStateProperty.all<Color>(const Color(0xff42D674)),
               ),
               child: const Text(
                 'Pay Bill',
                 style: TextStyle(
-                    fontSize: 12,
+                    fontSize: 18,
                     letterSpacing: 1.4,
-                    color: Colors.black,
+                    color: Colors.white,
                     fontWeight: FontWeight.w600),
               ),
             )
