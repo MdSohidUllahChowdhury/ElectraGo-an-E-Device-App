@@ -21,7 +21,7 @@ class _SplashScreenState extends State<SplashScreen> {
     // Small delay so splash screen is visible
     await Future.delayed(const Duration(seconds: 2));
 
-    final isLoggedIn = await StorageService.isLoggedIn();
+    final isLoggedIn = await StorageService.verifyTokenWithServer();
 
     if (mounted) {
       if (isLoggedIn) {

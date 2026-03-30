@@ -7,11 +7,10 @@ class AdsBord extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<String> slidercontend = [
-      'https://www.thedailystar.net/sites/default/files/styles/big_4/public/2026-03/Domm%202.jpg?h=66a2249f',
-      'https://www.thedailystar.net/sites/default/files/styles/big_1/public/2026-02/poster.png?h=a6c55029',
-      'https://www.businesstimes-bd.com/assets/news_photos/2026/03/24/image_4963_1774351649.webp',
-      'https://rakkhosh.net/wp-content/uploads/Rakkhosh-Movie.webp',
-      'https://mir-s3-cdn-cf.behance.net/projects/808/5d227c233479187.Y3JvcCwxOTk5LDE1NjQsMCwxMDI5.jpg'
+      'https://www.techbros.ae/cdn/shop/files/Social_Media_Banners_9.jpg?v=1747327728&width=1400',
+      'https://www.ecselectronics.com/cdn/shop/files/Home_Page_-_Big_Banners_1903_X_520_cf7c8c7c-d2bb-4925-9a95-6843f872bbcc.png?v=1755499319',
+      'https://storage.googleapis.com/mj-banner-bucket/banner-1734598374.png',
+      'https://img.freepik.com/free-vector/instagram-carousel-templates_52683-51654.jpg?semt=ais_hybrid&w=740&q=80',
     ];
     return CarouselSlider.builder(
       options: CarouselOptions(

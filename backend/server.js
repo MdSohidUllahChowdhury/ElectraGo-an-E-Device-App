@@ -204,7 +204,7 @@ app.post('/login', async (req, res) => {
     const token = jwt.sign(
       { userId: user.id, email: user.email },
       JWT_SECRET,
-      { expiresIn: '2h' }
+      { expiresIn: '20s' }
     );
 
     // Step 6: Send token back to Flutter
@@ -223,25 +223,19 @@ app.post('/login', async (req, res) => {
 });
 
 
-// ─────────────────────────────────────────────────────────────
-// MIDDLEWARE: verifyToken  ← NEW IN STEP 4
-//
-// What is middleware?
-//   A function that runs BETWEEN the request and your route.
-//   Like a security guard at a door — checks you before letting you in.
-//
-// How to use it:
-//   Add "verifyToken" between the URL and your function:
-//   app.get('/someRoute', verifyToken, (req, res) => { ... })
-//                              ↑
-//                      guard stands here
-//
-// How Flutter sends the token:
-//   Headers: { 'Authorization': 'Bearer eyJhbGciOi...' }
-//
-// If token is valid   → req.user is filled → route runs
-// If token is invalid → 401 error → route never runs
-// ─────────────────────────────────────────────────────────────
+app.get('/verifyToken', verifyToken, (req, res) => {
+  // If we reach here, verifyToken middleware passed
+  // meaning the token is still valid
+  res.status(200).json({
+    success: true,
+    message: 'Token is valid',
+    user: {
+      userId: req.user.userId,
+      email:  req.user.email,
+    }
+  });
+});
+
 function verifyToken(req, res, next) {
   // 1. Read the Authorization header
   const authHeader = req.headers['authorization'];
@@ -274,12 +268,7 @@ function verifyToken(req, res, next) {
     //   - tampered with
     const decoded = jwt.verify(token, JWT_SECRET);
 
-    // 5. Attach decoded data to req.user
-    //    Now your route can use req.user.userId, req.user.email etc.
     req.user = decoded;
-    // decoded looks like: { userId: 1, email: 'ali@test.com', name: 'Ali' }
-
-    // 6. Everything OK — move to the actual route
     next();
 
   } catch (err) {
@@ -291,7 +280,9 @@ function verifyToken(req, res, next) {
 }
 
 
-
+//!─────────────────────────────────────────────────────────────
+//? Profile Data
+//!─────────────────────────────────────────────────────────────
 app.post('/profileData', async (req, res) => {
   try {
     console.log('📩 Received from Flutter:', req.body);

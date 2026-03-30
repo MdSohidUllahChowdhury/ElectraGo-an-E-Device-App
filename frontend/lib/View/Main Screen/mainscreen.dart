@@ -41,6 +41,7 @@ class MainScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              const SizedBox(height: 15),
               Text(
                 'Wel'.tr,
                 style: const TextStyle(

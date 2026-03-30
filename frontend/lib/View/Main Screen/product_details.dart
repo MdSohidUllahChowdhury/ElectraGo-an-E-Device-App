@@ -1,8 +1,11 @@
 import 'package:ElectraGo/Controller/counter_laptop.dart';
+import 'package:ElectraGo/Controller/provider_cart.dart';
+import 'package:ElectraGo/Model/device_model.dart';
 import 'package:ElectraGo/Widgets/payment_system.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:get/get.dart';
+import 'package:provider/provider.dart';
 
 class ProductDetails extends StatelessWidget {
   final String productImage, brandName, offerPrice, noOfferPrice;
@@ -12,6 +15,31 @@ class ProductDetails extends StatelessWidget {
       required this.brandName,
       required this.offerPrice,
       required this.noOfferPrice});
+
+  void addToCart(BuildContext context) {
+    // Create a DeviceModel from the product details
+    final device = DeviceModel(
+      productPic: productImage,
+      brandName: brandName,
+      withOfferPrice: offerPrice,
+      withOutOfferPrice: noOfferPrice,
+      discount: "25%", // You can adjust this or pass it as parameter
+    );
+
+    // Add to cart using Provider
+    final cartProvider = Provider.of<CartController>(context, listen: false);
+    cartProvider.adtoCart(device);
+
+    // Show success feedback
+    Get.snackbar(
+      'Added to Cart',
+      '$brandName added to your cart',
+      snackPosition: SnackPosition.BOTTOM,
+      backgroundColor: Colors.green.shade600,
+      colorText: Colors.white,
+      duration: const Duration(seconds: 2),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -131,17 +159,14 @@ class ProductDetails extends StatelessWidget {
               children: [
                 payBill(brandName, offerPrice, productImage),
                 CircleAvatar(
-                  backgroundColor: Colors.redAccent,
+                  backgroundColor: Colors.black87,
                   radius: 26,
                   child: IconButton(
-                      onPressed: () {
-                        Get.snackbar('Added to the cart', 'Favorit item added',
-                            snackPosition: SnackPosition.BOTTOM,
-                            backgroundColor:
-                                const Color.fromARGB(209, 189, 167, 167));
-                      },
-                      icon:
-                          const Icon(Icons.shopping_cart, color: Colors.white)),
+                    onPressed: () {
+                      addToCart(context);
+                    },
+                    icon: const Icon(Icons.shopping_cart, color: Colors.white),
+                  ),
                 )
               ],
             ),
