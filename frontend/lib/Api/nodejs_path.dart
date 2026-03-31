@@ -65,6 +65,49 @@ class API {
     }
   }
 
+
+static Future<Map<String, dynamic>?> getProfile() async {
+  try {
+    // Step 1: Get token from secure storage
+    final token = await StorageService.getToken();
+
+    if (token == null) {
+      print('No token found');
+      return null;
+    }
+
+    // Step 2: Send GET request WITH token in header
+    final response = await http.get(
+      Uri.parse(baseUrl + '/profile'),
+      headers: {
+        'Content-Type':  'application/json',
+        'Authorization': 'Bearer $token', // ← this is how server knows who you are
+      },
+    );
+
+    final responseBody = jsonDecode(response.body);
+    print('Profile response: $responseBody');
+
+    if (response.statusCode == 200) {
+      return responseBody['user']; // { id, userName, email, created_at }
+    }
+
+    // Token expired during app use
+    if (response.statusCode == 401) {
+      print('❌ Token expired');
+      await StorageService.deleteToken();
+      return null;
+    }
+
+    return null;
+
+  } catch (e) {
+    print('❌ Error: $e');
+    return null;
+  }
+}
+
+
   static Future<void> postProfileData(Map<String, dynamic> data) async {
     var value = Uri.parse(baseUrl + "/profileData");
     print("Request Body: $data");

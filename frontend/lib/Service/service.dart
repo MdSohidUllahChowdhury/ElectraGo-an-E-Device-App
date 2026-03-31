@@ -55,7 +55,7 @@ static Future<bool> verifyTokenWithServer() async {
       Uri.parse('http://192.168.0.213:3000/verifyToken'),
       headers: {
         'Content-Type':  'application/json',
-        'Authorization': 'Bearer $token',  // send token to server
+        'Authorization': 'Bearer $token',
       },
     );
 

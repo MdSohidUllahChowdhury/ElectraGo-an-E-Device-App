@@ -1,8 +1,6 @@
 import 'package:ElectraGo/Api/nodejs_path.dart';
-import 'package:ElectraGo/View/Main Screen/mainscreen.dart';
-import 'package:ElectraGo/Widgets/textfield.dart';
+import 'package:ElectraGo/View/Intro%20Screen/login.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class ProfileSet extends StatefulWidget {
   const ProfileSet({super.key});
@@ -12,125 +10,149 @@ class ProfileSet extends StatefulWidget {
 }
 
 class _ProfileSetState extends State<ProfileSet> {
-  final _fullName = TextEditingController();
-  final _phoneNumber = TextEditingController();
-  final _address = TextEditingController();
+  // Holds user data from MySQL
+  Map<String, dynamic>? _user;
+  bool _isLoading = true; // shows spinner while fetching
+
+  @override
+  void initState() {
+    super.initState();
+    _loadProfile(); // fetch as soon as screen opens
+  }
+
+  // ── Fetch profile from server ─────────────────────────
+  Future<void> _loadProfile() async {
+    final user = await API.getProfile();
+
+    if (mounted) {
+      setState(() {
+        _user = user;
+        _isLoading = false;
+      });
+
+      // If null → token expired → go back to login
+      if (user == null) {
+        Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (_) => const Login()),
+          (route) => false,
+        );
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Session expired. Please login again.'),
+            backgroundColor: Colors.red,
+          ),
+        );
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    final formkey = GlobalKey<FormState>();
     return Scaffold(
-      body: Form(
-        key: formkey,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const Text(
-              'Profile Setup',
-              style: TextStyle(
-                fontSize: 28,
-                letterSpacing: 1.4,
-                color: Color(0xff42D674),
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            const SizedBox(height: 15),
-            const Text(
-              "Please fill be below details to complete\nyour profile",
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                  fontSize: 11,
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                  letterSpacing: 1.4),
-            ),
-            const SizedBox(height: 35),
-            Stack(alignment: Alignment.bottomRight, children: [
-              CircleAvatar(
-                backgroundColor: Colors.blue,
-                radius: 50,
-                child: IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.person,
-                    size: 90,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-              CircleAvatar(
-                backgroundColor: Colors.amberAccent,
-                radius: 17,
-                child: IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.camera_alt,
-                    size: 17,
-                  ),
-                ),
-              ),
-            ]),
-            const SizedBox(height: 25),
-            SectionName(
-              nameit: 'Full name',
-              controllerText: _fullName,
-              forPassword: false,
-              fieldType: FieldType.username,
-            ),
-            const SizedBox(height: 25),
-            SectionName(
-              nameit: 'Phone',
-              controllerText: _phoneNumber,
-              forPassword: false,
-              fieldType: FieldType.general,
-            ),
-            const SizedBox(height: 25),
-            SectionName(
-              nameit: 'Address',
-              controllerText: _address,
-              forPassword: false,
-              fieldType: FieldType.general,
-            ),
-            const SizedBox(height: 35),
-            ElevatedButton(
-              onPressed: () async {
-                if (formkey.currentState!.validate()) {
-                  final data = {
-                    'full_name': _fullName.text,
-                    'phone_number': _phoneNumber.text,
-                    'address': _address.text
-                  };
-                  await API.postProfileData(data);
-                  // ignore: use_build_context_synchronously
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text("Data Save"),
-                      backgroundColor: Colors.black,
+      appBar: AppBar(
+        title: const Text('My Profile'),
+        backgroundColor: Colors.teal,
+        foregroundColor: Colors.white,
+      ),
+      body: _isLoading
+
+          // ── Loading state ──────────────────────────────
+          ? const Center(
+              child: CircularProgressIndicator(color: Colors.teal),
+            )
+
+          // ── Loaded state ───────────────────────────────
+          : Padding(
+              padding: const EdgeInsets.all(24),
+              child: Column(
+                children: [
+                  // Avatar circle with first letter of name
+                  CircleAvatar(
+                    radius: 50,
+                    backgroundColor: Colors.teal,
+                    child: Text(
+                      _user?['userName']?[0].toUpperCase() ?? '?',
+                      style: const TextStyle(
+                        fontSize: 40,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                  );
-                  print('req from flutter: $data');
-                  Get.to(() => const MainScreen());
-                }
-              },
-              style: ButtonStyle(
-                elevation: const WidgetStatePropertyAll(0),
-                minimumSize: WidgetStateProperty.all<Size>(const Size(385, 60)),
-                backgroundColor: WidgetStateProperty.all<Color>(
-                  const Color(0xff42D674),
-                ),
+                  ),
+                  const SizedBox(height: 24),
+
+                  // User info card
+                  Container(
+                    width: double.infinity,
+                    padding: const EdgeInsets.all(20),
+                    decoration: BoxDecoration(
+                      color: Colors.teal.shade50,
+                      borderRadius: BorderRadius.circular(16),
+                      border: Border.all(color: Colors.teal.shade200),
+                    ),
+                    child: Column(
+                      children: [
+                        // Username row
+                        _infoRow(
+                          icon: Icons.person_outline,
+                          label: 'Username',
+                          value: _user?['userName'] ?? '-',
+                        ),
+                        const Divider(height: 24),
+
+                        // Email row
+                        _infoRow(
+                          icon: Icons.email_outlined,
+                          label: 'Email',
+                          value: _user?['email'] ?? '-',
+                        ),
+                        const Divider(height: 24),
+
+                        // Member since row
+                        _infoRow(
+                          icon: Icons.calendar_today_outlined,
+                          label: 'Member Since',
+                          value: _user?['created_at']
+                                  ?.toString()
+                                  .substring(0, 10) ??
+                              '-',
+                          // substring(0,10) gets just the date part
+                          // e.g. "2024-01-15 10:30:00" → "2024-01-15"
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
-              child: const Text(
-                'Complete Setup',
-                style: TextStyle(
-                    fontSize: 15,
-                    letterSpacing: 1.2,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold),
-              ),
+            ),
+    );
+  }
+
+  // ── Helper widget for each info row ──────────────────────
+  Widget _infoRow({
+    required IconData icon,
+    required String label,
+    required String value,
+  }) {
+    return Row(
+      children: [
+        Icon(icon, color: Colors.teal, size: 22),
+        const SizedBox(width: 12),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              label,
+              style: TextStyle(fontSize: 12, color: Colors.grey.shade600),
+            ),
+            Text(
+              value,
+              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
             ),
           ],
         ),
-      ),
+      ],
     );
   }
 }
