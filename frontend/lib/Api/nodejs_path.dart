@@ -107,7 +107,36 @@ static Future<Map<String, dynamic>?> getProfile() async {
   }
 }
 
+// Add this to your API class
+static Future<bool> updateProfile(String userName) async {
+  try {
+    final token = await StorageService.getToken();
+    
+    if (token == null) return false;
 
+    final response = await http.put(
+      Uri.parse(baseUrl + '/updateProfile'),
+      headers: {
+        'Content-Type':  'application/json',
+        'Authorization': 'Bearer $token',
+      },
+      body: jsonEncode({ 'userName': userName }),
+    );
+
+    final responseBody = jsonDecode(response.body);
+
+    if (response.statusCode == 200) {
+      print('✅ Profile updated: ${responseBody['userName']}');
+      return true;
+    } else {
+      print('❌ Failed: ${responseBody['message']}');
+      return false;
+    }
+  }catch (e) {
+    print('❌ Error: $e');
+    return false;
+  }
+}
   static Future<void> postProfileData(Map<String, dynamic> data) async {
     var value = Uri.parse(baseUrl + "/profileData");
     print("Request Body: $data");

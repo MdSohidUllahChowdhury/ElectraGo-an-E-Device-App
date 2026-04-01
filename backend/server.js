@@ -262,12 +262,7 @@ function verifyToken(req, res, next) {
 
   // 4. Verify the token is real and not expired
   try {
-    // jwt.verify will THROW an error if token is:
-    //   - fake (not made by our server)
-    //   - expired
-    //   - tampered with
     const decoded = jwt.verify(token, JWT_SECRET);
-
     req.user = decoded;
     next();
 
@@ -288,7 +283,6 @@ function verifyToken(req, res, next) {
 app.get('/profile', verifyToken, (req, res) => {
 
   // req.user.userId comes from the token
-  // We use it to find the right user in MySQL
   const sql = 'SELECT id, userName, email, created_at FROM authInfo WHERE id = ?';
   //           ↑ never select password column
 
@@ -309,6 +303,61 @@ app.get('/profile', verifyToken, (req, res) => {
   });
 });
 
+//!─────────────────────────────────────────────────────────────
+//? Update Profile
+//!─────────────────────────────────────────────────────────────
+
+
+// PUT /updateProfile — update userName
+// Protected — needs valid JWT token
+app.put('/updateProfile', verifyToken, async (req, res) => {
+  const { userName } = req.body;
+  const userId       = req.user.userId; // comes from the JWT token
+
+  // Validate
+  if (!userName || userName.trim().length < 2) {
+    return res.status(400).json({
+      success: false,
+      message: 'Username must be at least 2 characters',
+    });
+  }
+
+  if (userName.trim().length > 30) {
+    return res.status(400).json({
+      success: false,
+      message: 'Username must be less than 30 characters',
+    });
+  }
+
+  // Update MySQL
+  const sql = 'UPDATE authInfo SET userName = ? WHERE id = ?';
+
+  db.query(sql, [userName.trim(), userId], (err, result) => {
+    if (err) {
+      console.error('❌ DB error:', err.message);
+      return res.status(500).json({ success: false, message: 'Database error' });
+    }
+
+
+    // result.affectedRows = how many rows were updated
+    // If 0 — user not found
+    if (result.affectedRows === 0) {
+      return res.status(404).json({
+        success: false,
+
+        message: 'User not found',
+      });
+    }
+
+    console.log(`✅ userName updated → UserID: ${userId} | New name: ${userName}`);
+
+    res.status(200).json({
+      success:  true,
+      message:  'Profile updated successfully!',
+      userName: userName.trim(), // send back the new name
+    });
+  });
+});
 
 
 // ─────────────────────────────────────────────────────────────

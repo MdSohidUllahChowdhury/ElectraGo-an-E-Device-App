@@ -1,6 +1,8 @@
 import 'package:ElectraGo/Api/nodejs_path.dart';
 import 'package:ElectraGo/View/Intro%20Screen/login.dart';
+import 'package:ElectraGo/View/Setting%20Screen/edit_profile.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class ProfileSet extends StatefulWidget {
   const ProfileSet({super.key});
@@ -123,6 +125,20 @@ class _ProfileSetState extends State<ProfileSet> {
                       ],
                     ),
                   ),
+                  const SizedBox(height: 32),
+                  ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.teal,
+                          foregroundColor: Colors.white),
+                      onPressed: () {
+                        Get.to(() => EditProfileScreen(
+                            currentUserName: _user?['userName'] ?? ''));
+                      },
+                      child: const Text(
+                        'Edit Profile',
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.bold),
+                      ))
                 ],
               ),
             ),
