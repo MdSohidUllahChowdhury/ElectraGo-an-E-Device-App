@@ -8,18 +8,22 @@ Widget quantity() {
     children: [
       IconButton(
         onPressed: () => iteams--,
-        icon: const Icon(Icons.remove_circle),
+        icon: const Icon(
+          Icons.remove_circle,
+          color: Colors.white70,
+          size: 30,
+        ),
       ),
       const SizedBox(
         width: 20,
       ),
       Obx(() => Text(
-            'Quantity\n$iteams',
+            'Quantity: $iteams',
             textAlign: TextAlign.center,
             style: const TextStyle(
-                fontSize: 12,
+                fontSize: 18,
                 letterSpacing: 1.5,
-                color: Colors.black,
+                color: Colors.white,
                 fontWeight: FontWeight.w600),
           )),
       const SizedBox(
@@ -27,7 +31,11 @@ Widget quantity() {
       ),
       IconButton(
         onPressed: () => iteams++,
-        icon: const Icon(Icons.add_circle),
+        icon: const Icon(
+          Icons.add_circle,
+          color: Colors.white70,
+          size: 30,
+        ),
       )
     ],
   );

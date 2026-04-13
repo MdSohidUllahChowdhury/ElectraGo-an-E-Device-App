@@ -26,12 +26,14 @@ class ProductAddON extends StatelessWidget {
       itemBuilder: (context, index) {
         final iteam = product[index];
         return InkWell(
-          onTap: () => Get.to(() => ProductDetails(
-                productImage: iteam.productPic,
-                brandName: iteam.brandName,
-                offerPrice: iteam.withOfferPrice,
-                noOfferPrice: iteam.withOutOfferPrice,
-              )),
+          onTap: () => Get.to(
+              () => ProductDetails(
+                    productImage: iteam.productPic,
+                    brandName: iteam.brandName,
+                    offerPrice: iteam.withOfferPrice,
+                    noOfferPrice: iteam.withOutOfferPrice,
+                  ),
+              transition: Transition.leftToRight),
           child: Container(
               padding: context.isPhone
                   ? const EdgeInsets.all(8)

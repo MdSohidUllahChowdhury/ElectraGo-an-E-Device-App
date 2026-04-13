@@ -1,4 +1,4 @@
-import 'package:ElectraGo/Service/service.dart';
+import 'package:ElectraGo/Api/nodejs_path.dart';
 import 'package:ElectraGo/View/Intro%20Screen/login.dart';
 import 'package:ElectraGo/View/Main%20Screen/mainscreen.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +21,7 @@ class _SplashScreenState extends State<SplashScreen> {
     // Small delay so splash screen is visible
     await Future.delayed(const Duration(seconds: 2));
 
-    final isLoggedIn = await StorageService.verifyTokenWithServer();
+    final isLoggedIn = await API.verifyTokenWithServer();
 
     if (mounted) {
       if (isLoggedIn) {

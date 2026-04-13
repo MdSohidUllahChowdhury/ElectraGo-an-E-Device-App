@@ -12,7 +12,7 @@ Widget payBill(brandName, price, image) {
     style: ButtonStyle(
       elevation: const WidgetStatePropertyAll(0),
       minimumSize: WidgetStateProperty.all<Size>(const Size(300, 55)),
-      backgroundColor: WidgetStateProperty.all<Color>(const Color(0xff42D674)),
+      backgroundColor: WidgetStateProperty.all<Color>(const Color(0xffB1E2D6)),
     ),
     child: const Text(
       'Buy Now',

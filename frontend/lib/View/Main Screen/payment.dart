@@ -487,8 +487,8 @@ class _PaymentMethodState extends State<PaymentMethod> {
                             elevation: const WidgetStatePropertyAll(0),
                             minimumSize: WidgetStateProperty.all<Size>(
                                 const Size(double.infinity, 56)),
-                            backgroundColor: WidgetStateProperty.all<Color>(
-                                const Color(0xff2ECC71)),
+                            backgroundColor:
+                                WidgetStateProperty.all<Color>(Colors.teal),
                             shape: WidgetStatePropertyAll(
                               RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(12),

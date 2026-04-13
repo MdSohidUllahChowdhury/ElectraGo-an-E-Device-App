@@ -12,7 +12,7 @@ class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: const Color(0xff222F3A),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -22,13 +22,13 @@ class MainScreen extends StatelessWidget {
               Get.snackbar(
                   'Developing Mood', 'Currently Working on this Option');
             },
-            icon: const Icon(Icons.search),
+            icon: const Icon(Icons.search, color: Colors.white),
           ),
           IconButton(
             onPressed: () {
               Get.to(() => const CartItems());
             },
-            icon: const Icon(Icons.shopping_bag_outlined),
+            icon: const Icon(Icons.shopping_bag_outlined, color: Colors.white),
           ),
         ],
       ),
@@ -45,18 +45,18 @@ class MainScreen extends StatelessWidget {
               Text(
                 'Wel'.tr,
                 style: const TextStyle(
-                  fontSize: 25,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.black,
+                  fontSize: 26,
+                  fontWeight: FontWeight.w700,
+                  color: Colors.white,
                   letterSpacing: 1.2,
                 ),
               ),
               Text(
                 "Sub".tr,
                 style: const TextStyle(
-                  fontSize: 12,
+                  fontSize: 13,
                   fontWeight: FontWeight.w600,
-                  color: Color.fromARGB(136, 0, 0, 0),
+                  color: Colors.grey,
                   letterSpacing: 1.2,
                 ),
               ),

@@ -24,10 +24,10 @@ class CustomCart extends StatelessWidget {
                   margin:
                       const EdgeInsets.symmetric(vertical: 6, horizontal: 8),
                   padding: const EdgeInsets.all(12),
-                  height: 100,
+                  height: 120,
                   decoration: BoxDecoration(
-                      color: Colors.blueGrey,
-                      borderRadius: BorderRadius.circular(24),
+                      color: const Color(0xff222F3A),
+                      borderRadius: BorderRadius.circular(16),
                       boxShadow: [
                         BoxShadow(
                             blurRadius: 2,
@@ -49,23 +49,17 @@ class CustomCart extends StatelessWidget {
                           Text(
                             item.brandName,
                             style: const TextStyle(
-                                fontFamily: 'Bold',
-                                fontSize: 14,
-                                color: Colors.black),
+                                fontSize: 15, color: Colors.white),
                           ),
                           Text(
                             item.withOfferPrice,
                             style: const TextStyle(
-                                fontFamily: 'Bold',
-                                fontSize: 12,
-                                color: Colors.black),
+                                fontSize: 14, color: Colors.white),
                           ),
                           const Text(
                             'Reating: ⭐ 4.6',
-                            style: TextStyle(
-                                fontFamily: 'Bold',
-                                fontSize: 10,
-                                color: Colors.black),
+                            style:
+                                TextStyle(fontSize: 12, color: Colors.yellow),
                           ),
                         ],
                       )

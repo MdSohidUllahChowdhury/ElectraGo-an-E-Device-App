@@ -100,7 +100,7 @@ class _LoginState extends State<Login> {
                       bool isSuccess = await API.logIn(data);
 
                       if (isSuccess) {
-                        Get.to(() => const MainScreen());
+                        Get.offAll(() => const MainScreen());
                       } else {
                         // ignore: use_build_context_synchronously
                         ScaffoldMessenger.of(context).showSnackBar(

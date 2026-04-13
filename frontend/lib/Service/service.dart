@@ -1,5 +1,4 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:http/http.dart' as http;
 
 class StorageService {
   // Single instance used everywhere in the app
@@ -39,41 +38,4 @@ class StorageService {
   static Future<String?> getEmail() async {
     return await _storage.read(key: _keyEmail);
   }
-
-
-//! ── VERIFY token with server ────────────────────────────────
-// Returns true  → token valid, go to Home
-// Returns false → token expired, go to Login
-static Future<bool> verifyTokenWithServer() async {
-  final token = await getToken();
-
-  // No token at all → definitely not logged in
-  if (token == null) return false;
-
-  try {
-    final response = await http.get(
-      Uri.parse('http://192.168.0.213:3000/verifyToken'),
-      headers: {
-        'Content-Type':  'application/json',
-        'Authorization': 'Bearer $token',
-      },
-    );
-
-    if (response.statusCode == 200) {
-      print('✅ Token is valid');
-      return true;  // token still good
-    } else {
-      print('❌ Token expired — clearing session');
-      await deleteToken();
-      return false;
-    }
-
-  } catch (e) {
-    print('❌ Server error: $e');
-    // If server is unreachable, still let user in
-    // They will get 401 when they actually make a request
-    // ignore: unnecessary_null_comparison
-    return token != null;
-  }
-}
 }

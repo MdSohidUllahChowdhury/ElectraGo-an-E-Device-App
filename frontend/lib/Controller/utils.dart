@@ -18,13 +18,18 @@ class Utils {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text(
-              'Product Details\n-----------------------',
+              'Product Details',
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
                 color: Colors.black,
                 letterSpacing: 1.2,
               ),
+            ),
+            const Divider(
+              height: 25,
+              color: Colors.black,
+              thickness: 2,
             ),
             const SizedBox(
               height: 15,
@@ -63,7 +68,7 @@ class Utils {
                 elevation: const WidgetStatePropertyAll(0),
                 minimumSize: WidgetStateProperty.all<Size>(const Size(220, 55)),
                 backgroundColor:
-                    WidgetStateProperty.all<Color>(const Color(0xff42D674)),
+                    WidgetStateProperty.all<Color>(const Color(0xff222F3A)),
               ),
               child: const Text(
                 'Pay Bill',
@@ -87,7 +92,7 @@ class Utils {
           style: const TextStyle(
             fontSize: 15,
             fontWeight: FontWeight.w600,
-            color: Colors.black,
+            color: Colors.white,
             letterSpacing: 1.2,
           ),
         ),
@@ -98,7 +103,7 @@ class Utils {
             style: const TextStyle(
               fontSize: 12,
               fontWeight: FontWeight.w400,
-              color: Colors.blue,
+              color: Colors.grey,
               letterSpacing: 1.2,
             ),
           ),

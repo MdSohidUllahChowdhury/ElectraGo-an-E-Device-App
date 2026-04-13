@@ -306,9 +306,6 @@ app.get('/profile', verifyToken, (req, res) => {
 //!─────────────────────────────────────────────────────────────
 //? Update Profile
 //!─────────────────────────────────────────────────────────────
-
-
-// PUT /updateProfile — update userName
 // Protected — needs valid JWT token
 app.put('/updateProfile', verifyToken, async (req, res) => {
   const { userName } = req.body;
@@ -344,7 +341,6 @@ app.put('/updateProfile', verifyToken, async (req, res) => {
     if (result.affectedRows === 0) {
       return res.status(404).json({
         success: false,
-
         message: 'User not found',
       });
     }

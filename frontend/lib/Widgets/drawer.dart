@@ -1,7 +1,7 @@
-import 'package:ElectraGo/Service/service.dart';
 import 'package:ElectraGo/View/Intro%20Screen/login.dart';
 import 'package:ElectraGo/View/Setting%20Screen/language.dart';
 import 'package:ElectraGo/View/Setting%20Screen/profile.dart';
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -35,8 +35,8 @@ Widget customDrawer() {
           ),
           ListTile(
             onTap: () => Get.bottomSheet(language()),
-            leading: Icon(Icons.language_rounded,
-                color: Colors.greenAccent.shade400),
+            leading: const Icon(Icons.language_rounded,
+                color: Colors.white),
             title: const Text('L a n g u a g e',
                 style: TextStyle(color: Colors.white)),
             hoverColor: Colors.white,
@@ -49,10 +49,17 @@ Widget customDrawer() {
             hoverColor: Colors.white,
           ),
           ListTile(
-            onTap: () async {
-              await StorageService.deleteToken();
-              Get.offAll(() => const Login());
-            },
+            onTap: () => AwesomeDialog(
+              context: Get.context!,
+              width: 500,
+              dialogType: DialogType.warning,
+              animType: AnimType.bottomSlide,
+              title: 'Are you sure you want to log out?',
+              btnCancelOnPress: () {},
+              btnOkOnPress: () {
+                Get.offAll(() => const Login());
+              },
+            ).show(),
             leading: const Icon(Icons.logout_outlined, color: Colors.white),
             title: const Text('L o g  O u t',
                 style: TextStyle(color: Colors.white)),

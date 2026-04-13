@@ -111,8 +111,8 @@ class CartItems extends StatelessWidget {
                         // Navigate to checkout
                       },
                       style: ButtonStyle(
-                        backgroundColor: WidgetStatePropertyAll(
-                          Colors.green.shade600,
+                        backgroundColor: const WidgetStatePropertyAll(
+                          Colors.teal,
                         ),
                         minimumSize: const WidgetStatePropertyAll(
                             Size(double.infinity, 52)),

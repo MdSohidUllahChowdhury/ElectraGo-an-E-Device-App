@@ -29,15 +29,18 @@ Widget language() {
               onPressed: () {
                 Get.updateLocale(const Locale('Ban'));
                 Get.snackbar('Successful', 'Your Language is Bangla',
-                    duration: const Duration(seconds: 5),
-                    padding: const EdgeInsets.all(25),
+                    colorText: Colors.white,
+                    backgroundColor: const Color(0xff222F3A),
+                    duration: const Duration(seconds: 1),
+                    padding: const EdgeInsets.all(15),
                     margin: const EdgeInsets.all(10),
                     borderRadius: 16,
                     snackPosition: SnackPosition.TOP);
               },
               style: ButtonStyle(
                 minimumSize: WidgetStateProperty.all<Size>(const Size(150, 45)),
-                backgroundColor: WidgetStateProperty.all<Color>(Colors.teal),
+                backgroundColor:
+                    WidgetStateProperty.all<Color>(const Color(0xff222F3A)),
               ),
               child: const Text(
                 'Bangla',
@@ -48,14 +51,17 @@ Widget language() {
               onPressed: () {
                 Get.updateLocale(const Locale('Eng'));
                 Get.snackbar('Successful', 'Your Language is English',
-                    duration: const Duration(seconds: 5),
-                    padding: const EdgeInsets.all(10),
+                    colorText: Colors.white,
+                    backgroundColor: const Color(0xff222F3A),
+                    duration: const Duration(seconds: 1),
+                    padding: const EdgeInsets.all(15),
                     borderRadius: 16,
                     snackPosition: SnackPosition.TOP);
               },
               style: ButtonStyle(
                 minimumSize: WidgetStateProperty.all<Size>(const Size(150, 45)),
-                backgroundColor: WidgetStateProperty.all<Color>(Colors.teal),
+                backgroundColor:
+                    WidgetStateProperty.all<Color>(const Color(0xff222F3A)),
               ),
               child: const Text(
                 'English',

@@ -11,5 +11,3 @@ ElectraGo an E-Device Shopping App is a Flutter-based mobile application that al
 - **Multi-Language Support**: Users can switch between different languages for a personalized experience.
 - **Shopping Cart**: Add and manage products before making a purchase.
 - **Payment Integration**: Secure payment gateway for completing transactions.
-
-  ![image alt](https://github.com/MdSohidUllahChowdhury/E-Device-App/blob/master/lib/Assets/Images/my_app_ui_ss.png)

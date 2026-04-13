@@ -9,9 +9,13 @@ class CategorisIcon extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(right: 8),
       child: CircleAvatar(
-        backgroundColor: const Color(0xff53B176),
-        radius: 28,
-        child: icons,
+        backgroundColor: Colors.white.withValues(alpha: 0.3),
+        radius: 30,
+        child: CircleAvatar(
+          backgroundColor: Colors.pinkAccent.shade400.withValues(alpha: 0.6),
+          radius: 25,
+          child: icons,
+        ),
       ),
     );
   }

@@ -35,9 +35,9 @@ class ProductDetails extends StatelessWidget {
       'Added to Cart',
       '$brandName added to your cart',
       snackPosition: SnackPosition.BOTTOM,
-      backgroundColor: Colors.green.shade600,
-      colorText: Colors.white,
-      duration: const Duration(seconds: 2),
+      backgroundColor: const Color(0xffB1E2D6),
+      colorText: Colors.black87,
+      duration: const Duration(seconds: 1),
     );
   }
 
@@ -49,13 +49,20 @@ class ProductDetails extends StatelessWidget {
         elevation: 0,
         toolbarHeight: 45,
         centerTitle: true,
+        leading: IconButton(
+          onPressed: () {
+            Get.back();
+          },
+          icon: const Icon(Icons.arrow_back_ios_new, color: Colors.white),
+        ),
         title: const Text(
           "Product Details",
           style: TextStyle(
-              fontSize: 23, fontWeight: FontWeight.w700, color: Colors.black),
+              fontSize: 23, fontWeight: FontWeight.w700, color: Colors.white),
         ),
       ),
-      backgroundColor: Colors.white,
+      backgroundColor: const Color(0xff222F3A),
+      //Colors.blueAccent.shade200.withValues(alpha: 0.4),
       body: Container(
         padding: const EdgeInsets.all(6),
         margin: const EdgeInsets.all(8),
@@ -78,9 +85,9 @@ class ProductDetails extends StatelessWidget {
             Text(
               brandName,
               style: const TextStyle(
-                fontSize: 16,
+                fontSize: 20,
                 fontWeight: FontWeight.w800,
-                color: Colors.black,
+                color: Colors.white,
                 letterSpacing: 1.2,
               ),
             ),
@@ -88,7 +95,7 @@ class ProductDetails extends StatelessWidget {
             Container(
               height: MediaQuery.sizeOf(context).height * .35,
               decoration: const BoxDecoration(
-                  color: Colors.teal,
+                  color: Color(0xffB1E2D6),
                   borderRadius: BorderRadius.all(Radius.circular(10)),
                   boxShadow: [
                     BoxShadow(
@@ -140,12 +147,11 @@ class ProductDetails extends StatelessWidget {
                     thickness: 13,
                   ),
                   const Text(
-                    ' \nKey Features :\n\n MPN: 973R0PA\n Model: 15-fd0205TU\n Processor: Intel Core i5-1335U (up to 4.6 GHz, 12 MB L3 cache)\n RAM: 8 GB DDR4 3200MHz, Storage: 512GB PCIe M.2 SSD\n Display: 15.6" FHD (1920 x 1080)\n Features: Type-C, Wi-Fi 6, Privacy Shutter, Mic Mute Key',
+                    ' \n Key Features :\n\n MPN: 973R0PA\n Model: 15-fd0205TU\n Processor: Intel Core i5-1335U (up to 4.6 GHz, 12 MB L3 cache)\n RAM: 8 GB DDR4 3200MHz, Storage: 512GB PCIe M.2 SSD\n Display: 15.6" FHD (1920 x 1080)\n Features: Type-C, Wi-Fi 6, Privacy Shutter, Mic Mute Key',
                     style: TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.white,
-                      letterSpacing: 1.1,
+                      fontSize: 13,
+                      color: Colors.black,
+                      letterSpacing: 1,
                     ),
                   ),
                 ],
@@ -159,7 +165,7 @@ class ProductDetails extends StatelessWidget {
               children: [
                 payBill(brandName, offerPrice, productImage),
                 CircleAvatar(
-                  backgroundColor: Colors.black87,
+                  backgroundColor: Colors.blueAccent.shade400,
                   radius: 26,
                   child: IconButton(
                     onPressed: () {
