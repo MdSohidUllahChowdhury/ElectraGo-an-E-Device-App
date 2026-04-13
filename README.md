@@ -49,4 +49,4 @@ ElectraGo is a modern, high-performance Flutter-based mobile application designe
 
 1. **Clone the repository:**
    ```bash
-   git clone [https://github.com/your-username/ElectraGo.git](https://github.com/MdSohidUllahChowdhury/ElectraGo.git)
+   git clone [https://github.com/MdSohidUllahChowdhury/ElectraGo.git]
