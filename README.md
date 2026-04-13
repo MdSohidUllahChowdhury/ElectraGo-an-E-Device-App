@@ -1,13 +1,52 @@
-# ElectraGo an E-Device App
+# ElectraGo - E-Device Shopping App
 
-## Overview
-ElectraGo an E-Device Shopping App is a Flutter-based mobile application that allows users to browse and purchase electronic devices. The app features authentication, profile management, a shopping cart, multi-language support, and a secure payment system.
+ElectraGo is a modern, high-performance Flutter-based mobile application designed for browsing and purchasing electronic devices. The app features a full-stack architecture with a custom-built backend for secure data handling and user management.
 
-## Features
-- **Welcome Screen**: A user-friendly introduction to the app.
-- **Authentication**: Login and signup options for secure access.
-- **Profile Management**: Users can add and manage their profile information.
-- **Main Page**: Displays a collection of electronic devices available for purchase.
-- **Multi-Language Support**: Users can switch between different languages for a personalized experience.
-- **Shopping Cart**: Add and manage products before making a purchase.
-- **Payment Integration**: Secure payment gateway for completing transactions.
+---
+
+## 🚀 Key Updates
+- **Custom Auth System**: Implemented a secure authentication flow using **Node.js** and **Express**.
+- **Database Integration**: Connected to a persistent database to manage user records and product data.
+- **RESTful API**: Custom endpoints for seamless communication between the Flutter app and the server.
+
+---
+
+## ✨ Features
+- **User Authentication**: Secure Login and Signup system with custom backend verification.
+- **Profile Management**: Users can create and update their personal information and manage account settings.
+- **Product Discovery**: A dynamic main page showcasing the latest electronic gadgets and devices.
+- **Shopping Cart**: Fully functional cart for adding, removing, and managing products before checkout.
+- **Multi-Language Support**: Localization support to cater to a global audience.
+- **Secure Payments**: Integrated payment gateway for safe and reliable transactions.
+- **User-Friendly UI**: Clean, responsive, and intuitive interface designed with Flutter.
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+- **Framework**: Flutter (Dart)
+- **State Management**: [Provider / GetX]
+
+### Backend
+- **Environment**: Node.js
+- **Framework**: Express.js
+- **Authentication**: Custom JWT or Session-based Auth
+
+### Database
+- **Storage**: [MySQL]
+
+---
+
+## 🏗️ Getting Started
+
+### Prerequisites
+- Flutter SDK
+- Node.js & NPM
+- Database (Local or Cloud instance)
+
+### Installation
+
+1. **Clone the repository:**
+   ```bash
+   git clone [https://github.com/your-username/ElectraGo.git](https://github.com/MdSohidUllahChowdhury/ElectraGo.git)
