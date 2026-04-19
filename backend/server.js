@@ -46,7 +46,7 @@ app.post('/authInfo', async (req, res) => {
   if (!userName || !email || !password) {
     return res.status(400).json({
       success: false,
-      message: 'userName, email and password are all required',
+      message: 'userName, email apasswornd d are all required',
     });
   }
 

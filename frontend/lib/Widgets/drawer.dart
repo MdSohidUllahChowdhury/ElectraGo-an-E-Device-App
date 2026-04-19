@@ -15,14 +15,17 @@ Widget customDrawer() {
         children: [
           const SizedBox(height: 20),
           const CircleAvatar(
-            backgroundColor: Colors.blue,
-            foregroundColor: Colors.white,
-            radius: 50,
-            child: Icon(
-              Icons.person_3,
-              size: 50,
-            ),
-          ),
+              backgroundColor: Colors.blue,
+              foregroundColor: Colors.white,
+              radius: 50,
+              child: Image(
+                  image: NetworkImage(
+                      'https://avatars.githubusercontent.com/u/157578225?s=400&u=964b4d9c7a4c30ece9f6588c3886f9d9f10bbc20&v=4'))
+              // Icon(
+              //   Icons.person_3,
+              //   size: 50,
+              // ),
+              ),
           const SizedBox(
             height: 80,
           ),
@@ -35,8 +38,7 @@ Widget customDrawer() {
           ),
           ListTile(
             onTap: () => Get.bottomSheet(language()),
-            leading: const Icon(Icons.language_rounded,
-                color: Colors.white),
+            leading: const Icon(Icons.language_rounded, color: Colors.white),
             title: const Text('L a n g u a g e',
                 style: TextStyle(color: Colors.white)),
             hoverColor: Colors.white,
