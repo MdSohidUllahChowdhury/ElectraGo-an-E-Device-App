@@ -4,7 +4,7 @@ ElectraGo is a modern, high-performance Flutter-based mobile application designe
 
 ---
 
-
+![image alt](https://github.com/MdSohidUllahChowdhury/ElectraGo-an-E-Device-App/blob/master/frontend/lib/Assets/Images/collage.jpg)
 
 ---
 
